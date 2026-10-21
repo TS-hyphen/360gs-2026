@@ -1,0 +1,38 @@
+:root,
+body[data-theme="operator-civic"] {
+  --color-bg: #e6eef5;
+  --color-bg-deep: #d6e2ec;
+  --color-panel: rgba(255, 255, 255, 0.92);
+  --color-panel-soft: rgba(244, 248, 251, 0.92);
+  --color-panel-strong: #ffffff;
+  --color-hero: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 247, 251, 0.9));
+  --color-input: rgba(255, 255, 255, 0.98);
+  --color-ink: #152432;
+  --color-muted: #5d6b78;
+  --color-line: rgba(21, 36, 50, 0.1);
+  --color-line-strong: rgba(21, 36, 50, 0.18);
+  --color-accent: #1c628f;
+  --color-accent-strong: #0e4568;
+  --color-accent-soft: rgba(28, 98, 143, 0.12);
+  --color-accent-wash: rgba(53, 133, 184, 0.18);
+  --color-ok: #2f6d58;
+  --color-warn: #8d671f;
+  --color-error: #8c2a2a;
+  --color-track: rgba(21, 36, 50, 0.08);
+  --shadow-panel: 0 18px 45px rgba(18, 26, 38, 0.12);
+  --shadow-strong: 0 24px 60px rgba(18, 26, 38, 0.18);
+  --radius-hero: 32px;
+  --radius-panel: 24px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --space-page: 28px;
+  --space-panel: 22px;
+  --space-card: 16px;
+  --grid-gap: 18px;
+  --page-width: 1280px;
+  --font-body: "Segoe UI Variable Text", "Aptos", "Segoe UI", sans-serif;
+  --font-display: "Georgia", "Palatino Linotype", serif;
+  --font-accent: "Segoe UI Variable Small", "Aptos", sans-serif;
+  --font-mono: "Consolas", "Courier New", monospace;
+  --transition-fast: 140ms ease;
+}

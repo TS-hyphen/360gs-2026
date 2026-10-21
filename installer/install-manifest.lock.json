@@ -1,0 +1,123 @@
+{
+  "manifestVersion": "v1.0",
+  "generatedAtUtc": "2026-02-24T21:30:00Z",
+  "profiles": [
+    "preview-min",
+    "research-full",
+    "offline-preview"
+  ],
+  "packs": [
+    "core",
+    "sharp-preview",
+    "colmap-global",
+    "glomap-standalone",
+    "lichtfeld-studio"
+  ],
+  "artifacts": [
+    {
+      "id": "python311-embed",
+      "version": "3.11.9",
+      "profiles": [
+        "preview-min",
+        "research-full",
+        "offline-preview"
+      ],
+      "packs": [
+        "core"
+      ],
+      "source": {
+        "type": "url",
+        "path": "https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip"
+      },
+      "sha256": "009d6bf7e3b2ddca3d784fa09f90fe54336d5b60f0e0f305c37f400bf83cfd3b",
+      "install": {
+        "method": "extract-zip",
+        "targetSubdir": "runtime\\python311",
+        "expectedRelativePath": "python.exe"
+      }
+    },
+    {
+      "id": "ffmpeg-essentials",
+      "version": "7.1.1",
+      "profiles": [
+        "preview-min",
+        "research-full",
+        "offline-preview"
+      ],
+      "packs": [
+        "core"
+      ],
+      "source": {
+        "type": "url",
+        "path": "https://github.com/GyanD/codexffmpeg/releases/download/7.1.1/ffmpeg-7.1.1-essentials_build.zip"
+      },
+      "sha256": "04861d3339c5ebe38b56c19a15cf2c0cc97f5de4fa8910e4d47e5e6404e4a2d4",
+      "install": {
+        "method": "extract-zip",
+        "targetSubdir": "tools\\ffmpeg",
+        "expectedRelativePath": "ffmpeg-7.1.1-essentials_build\\bin\\ffmpeg.exe"
+      }
+    },
+    {
+      "id": "colmap-windows-cuda",
+      "version": "3.13.0",
+      "profiles": [
+        "research-full"
+      ],
+      "packs": [
+        "colmap-global"
+      ],
+      "source": {
+        "type": "url",
+        "path": "https://github.com/colmap/colmap/releases/download/3.13.0/colmap-x64-windows-cuda.zip"
+      },
+      "sha256": "60f77bd8e9823e6d2b39082ee665f69c91900011d5321fc54a4dfebe3de110b7",
+      "install": {
+        "method": "extract-zip",
+        "targetSubdir": "packs\\colmap-global",
+        "expectedRelativePath": "bin\\colmap.exe"
+      }
+    },
+    {
+      "id": "glomap-windows-cuda",
+      "version": "1.2.0",
+      "profiles": [
+        "research-full"
+      ],
+      "packs": [
+        "glomap-standalone"
+      ],
+      "source": {
+        "type": "url",
+        "path": "https://github.com/colmap/glomap/releases/download/1.2.0/glomap-x64-windows-cuda.zip"
+      },
+      "sha256": "7b32a8b0ecfaec28b82d5e0b7d40e38198259849ad1af8ba3e34dab301a3a773",
+      "install": {
+        "method": "extract-zip",
+        "targetSubdir": "packs\\glomap-standalone",
+        "expectedRelativePath": "bin\\glomap.exe"
+      }
+    },
+    {
+      "id": "lichtfeld-studio-windows",
+      "version": "0.4.2",
+      "profiles": [
+        "research-full"
+      ],
+      "packs": [
+        "lichtfeld-studio"
+      ],
+      "source": {
+        "type": "url",
+        "path": "https://github.com/MrNeRF/LichtFeld-Studio/releases/download/v0.4.2/LichtFeld-Studio-Windows-v0_4_2_.zip"
+      },
+      "sha256": "d2e669b6cd3e06ba6c96e690d225ef5d93edacdae023f03a09eb3f5b05bc16e5",
+      "install": {
+        "method": "extract-zip-nested",
+        "targetSubdir": "packs\\lichtfeld-studio",
+        "nestedZipPattern": "LichtFeld-Studio-windows-nightly-*.zip",
+        "expectedRelativePath": "bin\\LichtFeld-Studio.exe"
+      }
+    }
+  ]
+}

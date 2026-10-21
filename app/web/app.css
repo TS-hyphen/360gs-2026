@@ -1,0 +1,12 @@
+@layer tokens, base, layout, components;
+
+/*
+  Frontend style manifest.
+  Future visual redesigns should primarily touch files under ./styles/
+  while keeping the HTML ids and data-* hooks stable for behavior.
+*/
+
+@import url("./styles/tokens.css") layer(tokens);
+@import url("./styles/base.css") layer(base);
+@import url("./styles/layout.css") layer(layout);
+@import url("./styles/components.css") layer(components);

@@ -1,0 +1,55 @@
+{
+  "version": "v1",
+  "datasets": [
+    {
+      "id": "mipnerf360-bicycle",
+      "name": "Mip-NeRF 360 Bicycle",
+      "task": "production-multiview",
+      "modality": "images",
+      "homepage": "https://jonbarron.info/mipnerf360/",
+      "local_path": "datasets/mipnerf360/360_v2/bicycle",
+      "recommended_entry": "images_4",
+      "notes": "Good first real multi-view benchmark scene. Use images_4 for lighter staging; use images for full-resolution testing later."
+    },
+    {
+      "id": "mipnerf360-bonsai",
+      "name": "Mip-NeRF 360 Bonsai",
+      "task": "production-multiview",
+      "modality": "images",
+      "homepage": "https://jonbarron.info/mipnerf360/",
+      "local_path": "datasets/mipnerf360/360_v2/bonsai",
+      "recommended_entry": "images_4",
+      "notes": "Reference benchmark scene. Use images_4 for lighter local tests and images for full-resolution production-path evaluation."
+    },
+    {
+      "id": "mipnerf360-garden",
+      "name": "Mip-NeRF 360 Garden",
+      "task": "production-multiview",
+      "modality": "images",
+      "homepage": "https://jonbarron.info/mipnerf360/",
+      "local_path": "datasets/mipnerf360/360_v2/garden",
+      "recommended_entry": "images_4",
+      "notes": "Useful for checking large-viewpoint and foliage robustness. Use images_4 first on laptop hardware."
+    },
+    {
+      "id": "tandt-truck",
+      "name": "Tanks and Temples Truck",
+      "task": "production-multiview",
+      "modality": "images",
+      "homepage": "https://www.tanksandtemples.org/",
+      "local_path": "",
+      "recommended_entry": "images",
+      "notes": "Reference real-world reconstruction dataset for later production benchmarking."
+    },
+    {
+      "id": "sharp-single-image-smoke",
+      "name": "Single Image SHARP Smoke Test",
+      "task": "preview-single-image",
+      "modality": "images",
+      "homepage": "",
+      "local_path": "TEST_PROJECT",
+      "recommended_entry": "TEST_PROJECT",
+      "notes": "Local smoke-test dataset for validating managed SHARP install and output wiring."
+    }
+  ]
+}

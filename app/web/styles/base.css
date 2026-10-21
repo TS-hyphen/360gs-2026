@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.68), transparent 26%),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.32), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(28, 98, 143, 0.08), transparent 32%),
+    linear-gradient(180deg, #edf3f9 0%, var(--color-bg) 52%, var(--color-bg-deep) 100%);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+body.busy {
+  cursor: wait;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+main,
+section,
+article,
+aside,
+div,
+form,
+label,
+details {
+  min-width: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+summary {
+  font: inherit;
+}
+
+.mono {
+  display: inline-block;
+  max-width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.89rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.subtle-label {
+  margin: 0;
+  color: var(--color-accent-strong);
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,25 @@
+# Generated pipeline artifacts
+/artifacts/
+/benchmark/jobs/
+/benchmark/results/
+/benchmark/staged/
+
+# Local datasets and scratch work
+/datasets/
+/TEST_PROJECT/
+/TEMP_LFS_REPO/
+
+# Installer caches and local runtime state
+/installer/.cache-*/
+/config/datasets.local.json
+/360GS_code_docs_backup_*.zip
+/*.zip
+
+# Environment/editor noise
+/imgui.ini
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp

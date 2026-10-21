@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>360GS Operator Console</title>
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body data-theme="operator-civic">
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <strong>360GS</strong>
+          <span class="brand-subtitle">Operator Console</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-copy-block">
+        <p class="eyebrow">360GS Windows Pipeline</p>
+        <h1>Create a splat without the guesswork.</h1>
+        <p class="hero-copy">Point to an image folder, choose how polished you want the result to be, and let the app build the camera layout and final model for you.</p>
+        <p id="globalMessage" class="message"></p>
+        <div id="busyBanner" class="busy-banner" hidden>Working...</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="panel panel-wide simple-panel">
+        <div class="section-title">
+          <div>
+            <h2>Simple Workflow</h2>
+            <p class="section-note">Check a folder, choose a quality level, then create the splat.</p>
+          </div>
+        </div>
+        <form id="simpleForm" class="simple-grid">
+          <label class="wide">
+            Image Folder Path
+            <div class="inline-field">
+              <input id="simpleFolderPath" type="text" placeholder="Example: C:\capture\bonsai\images" />
+              <button id="inspectFolder" type="button" class="secondary">Check Folder</button>
+            </div>
+          </label>
+
+          <div id="folderSummary" class="folder-summary muted-card">
+            Enter a folder path and click <strong>Check Folder</strong>. The quality options will unlock after the app finds supported images.
+          </div>
+
+          <label>
+            Model Quality
+            <select id="qualityMode" disabled>
+              <option value="">Check a folder first</option>
+              <option value="fast-preview">Fast-preview</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+
+          <div id="qualityExplain" class="quality-explain muted-card">
+            Quality details and rough timing will appear here after the folder is checked.
+          </div>
+
+          <div class="form-actions">
+            <button id="createSplat" type="submit" class="primary" disabled>Create Splat!</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Workflow Status</h2>
+        </div>
+        <div id="workflowStatus" class="status-stack"></div>
+        <div class="history-header">
+          <h2 class="subsection-title">Recent Workflow History</h2>
+          <button id="clearWorkflowHistory" type="button" class="ghost">Clear Old History</button>
+        </div>
+        <div id="workflowHistory" class="list-stack"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <h2>This Device</h2>
+            <p class="section-note">A quick check of what is ready on this computer.</p>
+          </div>
+          <span class="callout callout-soft">Ready check</span>
+        </div>
+        <div id="installStatus" class="fact-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <h2>Recent Runs</h2>
+            <p class="section-note">Quick links to your latest model-building activity and saved results.</p>
+          </div>
+        </div>
+        <div id="latestJobs" class="status-stack"></div>
+      </section>
+
+      <section class="panel panel-full">
+        <details id="advancedPanel">
+          <summary>Advanced Options</summary>
+          <p class="section-note details-note">Extra tools for video import, photo preparation, and recovery steps. Most people can stay with the simple workflow above.</p>
+          <div class="advanced-grid">
+            <section class="panel nested-panel panel-wide">
+              <div class="section-title">
+                <div>
+                  <h2>Prepare Media</h2>
+                  <p class="section-note">Use this when your starting point is a video instead of a photo folder. The simple workflow above is still for photos only.</p>
+                </div>
+              </div>
+              <form id="mediaForm" class="simple-grid">
+                <label class="wide">
+                  Media Source Path
+                  <div class="inline-field">
+                    <input id="mediaSourcePath" type="text" placeholder="Example: C:\capture\walkthrough.mp4" />
+                    <button id="mediaInspect" type="button" class="secondary">Analyze Media</button>
+                  </div>
+                </label>
+
+                <div id="mediaSummary" class="folder-summary muted-card">
+                  Point to a supported video file, or to a folder containing one video file, then click <strong>Analyze Media</strong>.
+                </div>
+
+                <label>
+                  Import Quality
+                  <select id="mediaQuality" disabled>
+                    <option value="">Analyze media first</option>
+                    <option value="fast-preview">Fast-preview</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+
+                <div id="mediaQualityExplain" class="quality-explain muted-card">
+                  Analyze a video path first. The app will suggest the best starting preset and explain what it will prepare.
+                </div>
+
+                <div class="form-actions">
+                  <button id="prepareMedia" type="submit" class="secondary" disabled>Prepare Frames</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="panel nested-panel">
+              <div class="section-title">
+                <div>
+                  <h2>Prepare Photo Set</h2>
+                  <p class="section-note">Make a working copy of a saved photo set before the next step.</p>
+                </div>
+              </div>
+              <form id="stageForm" class="form-grid">
+                <label>
+                  Dataset
+                  <select id="datasetId" required></select>
+                </label>
+                <label>
+                  Variant
+                  <input id="variant" type="text" placeholder="Use recommended entry if blank" />
+                </label>
+                <label>
+                  Max Images
+                  <input id="maxImages" type="number" min="0" value="0" />
+                </label>
+                <label>
+                  Stride
+                  <input id="stride" type="number" min="1" value="1" />
+                </label>
+                <label>
+                  Start Index
+                  <input id="startIndex" type="number" min="0" value="0" />
+                </label>
+                <div class="form-actions">
+                  <button type="submit" class="secondary">Prepare Photo Set</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="panel nested-panel">
+              <div class="section-title">
+                <div>
+                  <h2>Prepared Photo Sets</h2>
+                  <p class="section-note">Delete removes only the working copy made by 360GS. Your original photos stay untouched.</p>
+                </div>
+              </div>
+              <div id="stagedList" class="list-stack"></div>
+            </section>
+
+            <section class="panel nested-panel">
+              <div class="section-title">
+                <div>
+                  <h2>Build Camera Layout</h2>
+                  <p class="section-note">Use this if you need to restart from a prepared photo set instead of starting over.</p>
+                </div>
+              </div>
+              <form id="glomapForm" class="form-grid">
+                <label>
+                  Prepared Photo Set
+                  <select id="glomapStage" required></select>
+                </label>
+                <label>
+                  Matcher
+                  <select id="glomapMatcher">
+                    <option value="sequential">Sequential</option>
+                    <option value="vocab_tree">Vocab Tree</option>
+                  </select>
+                </label>
+                <label>
+                  SIFT Max Image Size
+                  <input id="siftMaxImageSize" type="number" min="256" value="2400" />
+                </label>
+                <label>
+                  Random Seed
+                  <input id="randomSeed" type="number" min="0" value="0" />
+                </label>
+                <label class="checkbox">
+                  <input id="useGpu" type="checkbox" />
+                  Use GPU
+                </label>
+                <label class="checkbox">
+                  <input id="singleCamera" type="checkbox" checked />
+                  Treat as single camera
+                </label>
+                <div class="form-actions">
+                  <button type="submit" class="secondary">Build Camera Layout</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="panel nested-panel">
+              <div class="section-title">
+                <div>
+                  <h2>Saved Camera Layouts</h2>
+                  <p class="section-note">Recent layouts that are ready for the final model-building step.</p>
+                </div>
+              </div>
+              <div id="sparseList" class="list-stack"></div>
+            </section>
+
+            <section class="panel nested-panel panel-wide">
+              <div class="section-title">
+                <div>
+                  <h2>Finish Model Building</h2>
+                  <p class="section-note">Use this to continue from a prepared photo set and camera layout when you do not want to restart from the beginning.</p>
+                </div>
+              </div>
+              <form id="lichtfeldForm" class="form-grid">
+                <label>
+                  Prepared Photo Set
+                  <select id="lichtfeldStage" required></select>
+                </label>
+                <label>
+                  Sparse Model
+                  <select id="sparseModel" required></select>
+                </label>
+                <label>
+                  Strategy
+                  <select id="strategy">
+                    <option value="mcmc">MCMC</option>
+                    <option value="adc">ADC</option>
+                  </select>
+                </label>
+                <label>
+                  Image Mode
+                  <select id="imagesMode">
+                    <option value="junction">Junction</option>
+                    <option value="copy">Copy</option>
+                  </select>
+                </label>
+                <label>
+                  Iterations
+                  <input id="iterations" type="number" min="1" value="1000" />
+                </label>
+                <div class="form-actions">
+                  <button type="submit" class="secondary">Finish Model Building</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <div id="cancelModalScrim" class="modal-scrim" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="cancelModalTitle" aria-describedby="cancelModalBody">
+      <p class="subtle-label subtle-label-danger">Cancel Workflow</p>
+      <h2 id="cancelModalTitle">Stop this run?</h2>
+      <p id="cancelModalBody" class="modal-copy"></p>
+      <p id="cancelModalNote" class="modal-note"></p>
+      <div class="modal-actions">
+        <button id="cancelModalNo" type="button" class="secondary">No</button>
+        <button id="cancelModalYes" type="button" class="danger-fill">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
